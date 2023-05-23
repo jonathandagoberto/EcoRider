@@ -38,13 +38,14 @@
             margin-bottom: 10px;
             border-radius: 5px;
             border: 1px solid #ccc;
-            box-sizing: border-box; /* Añadido */
+            background-color: #f2f2f2; /* Color de fondo gris */
+            box-sizing: border-box;
         }
 
         input[type="submit"] {
             width: 100%;
             padding: 10px;
-            background-color: #4CAF50;
+            background-color: black; /* Color de fondo negro */
             border: none;
             color: #fff;
             cursor: pointer;
@@ -61,11 +62,14 @@
 </head>
 <body>
     <h1>EcoRider</h1>
+    <img src="imagenes/moto.png" alt="Moto" style="display: block; margin: 0 auto; max-width: 399px; height: 398px;">
+
     <form action="login.php" method="post" onsubmit="return validateForm()">
         <fieldset>
-            <legend>Ingreso</legend>
+            <legend>Iniciar sesión</legend>
+            <p>Iniciar sesión para continuar</p>
             <div class="error-msg" id="error-msg"></div>
-            <label for="username"><i class="fas fa-user"></i> Usuario:</label>
+            <label for="username"><i class="fas fa-user"></i> Correo o Nombre de Usuario:</label> <!-- Cambiado a "Correo o Nombre de Usuario" -->
             <input type="text" id="username" name="username">
             <br>
             <label for="password"><i class="fas fa-lock"></i> Contraseña:</label>
@@ -75,6 +79,8 @@
         </fieldset>
     </form>
 
+    <p style="text-align: center;"><a href="#">¿Olvidó la contraseña?</a> | <a href="#">Registrarse</a></p>
+    
     <script>
         function validateForm() {
             var username = document.getElementById("username").value;
@@ -91,4 +97,3 @@
     </script>
 </body>
 </html>
-
