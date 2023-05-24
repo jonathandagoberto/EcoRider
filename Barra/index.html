@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Barra de Navegación</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url(file:///C:/xampp/htdocs/ecorider/imagenes/motosg.png);
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Estilos para la barra de navegación */
+        .navbar {
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .navbar-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .navbar-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        .dropdown .dropbtn {
+            background-color: transparent;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown .dropbtn span {
+            margin-left: 5px;
+        }
+
+        .dropdown .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Estilos para los íconos */
+        .fas {
+            margin-right: 5px;
+        }
+
+        /* Estilos para los círculos de estado */
+        .status-circle {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .status-online {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-menu">
+            <div class="dropdown">
+                <button class="dropbtn">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Nombre de Usuario</span>
+                    <span class="status-circle status-online"></span>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#"><i class="fas fa-plus"></i> Crear Usuario</a>
+                    <a href="#"><i class="fas fa-list"></i> Listar Usuario</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">
+                    <i class="fas fa-building"></i>
+                    <span>Empresas</span>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#"><i class="fas fa-plus"></i> Crear Empresa</a>
+                    <a href="#"><i class="fas fa-list"></i> Listar Empresa</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">
+                    <i class="fas fa-box"></i>
+                    <span>Producto</span>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#"><i class="fas fa-plus"></i> Crear Producto</a>
+                    <a href="#"><i class="fas fa-list"></i> Listar Producto</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="navbar-title">EcoRider</div>
+    </div>
+</body>
+</html>
