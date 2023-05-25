@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EcoRider</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        /* Aquí colocas el código CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: #f2f2f2;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: black; 
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .error-msg {
+            color: red;
+            margin-bottom: 10px;
+            display: none;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <h1>EcoRider</h1>
+    <img src="imagenes/moto.png" alt="Moto" style="display: block; margin: 0 auto; max-width: 399px; height: 398px;">
+
+    <form action="register.php" method="post" onsubmit="return validateForm()">
+        <fieldset>
+            <legend>Crear cuenta</legend>
+            <p>Regístrate para comenzar</p>
+            <div class="error-msg" id="error-msg"></div>
+            <label for="name"><i class="fas fa-user"></i> Nombre:</label>
+            <input type="text" id="name" name="name">
+            <br>
+            <label for="email"><i class="fas fa-envelope"></i> Correo electrónico:</label>
+            <input type="text" id="email" name="email">
+            <br>
+            <label for="password"><i class="fas fa-lock"></i> Contraseña:</label>
+            <input type="password" id="password" name="password">
+            <br>
+            <label for="phone"><i class="fas fa-phone"></i> Teléfono:</label>
+            <input type="text" id="phone" name="phone">
+            <br>
+            <input type="submit" value="Crear cuenta">
+        </fieldset>
+    </form>
+
+    <p style="text-align: center;"><a href="#">¿Ya tienes una cuenta? Inicia sesión</a></p>
+
+    <script>
+        function validateForm() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var phone = document.getElementById("phone").value;
+
+            if (name === "" || email === "" || password === "" || phone === "") {
+                document.getElementById("error-msg").innerHTML = "Por favor, complete todos los campos.";
+                document.getElementById("error-msg").style.display = "block";
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>

@@ -5,6 +5,7 @@
 
     // Realizar la validación y determinar si hay errores
     $errors = array();
+
     if (empty($username)) {
         $errors[] = "El campo de usuario no puede estar vacío.";
     }
@@ -23,3 +24,4 @@
         echo "Inicio de sesión exitoso. Bienvenido, $username!";
     }
 ?>
+

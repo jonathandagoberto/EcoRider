@@ -1,99 +1,132 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>EcoRider</title>
+    <title>EcoRider - Página Principal</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        /* Aquí colocas el código CSS */
+        /* Estilos CSS adicionales */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            padding: 20px;
+            background-image: url(imagenes/motosg.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
         }
-
-        h1 {
-            text-align: center;
-        }
-
-        form {
-            max-width: 400px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
+        
+        .logo {
+            font-size: 24px;
             font-weight: bold;
+            margin-left: 10px;
         }
 
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            background-color: #f2f2f2; /* Color de fondo gris */
-            box-sizing: border-box;
+        .menu {
+            margin-top: 20px;
         }
 
-        input[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            background-color: black; /* Color de fondo negro */
-            border: none;
-            color: #fff;
-            cursor: pointer;
-            border-radius: 5px;
+        .submenu {
+            margin-left: 20px;
         }
-
-        .error-msg {
-            color: red;
-            margin-bottom: 10px;
-            display: none;
+        
+        /* Estilos adicionales para el contenido */
+        .content {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
         }
     </style>
-    <script src="script.js"></script>
 </head>
 <body>
-    <h1>EcoRider</h1>
-    <img src="imagenes/moto.png" alt="Moto" style="display: block; margin: 0 auto; max-width: 399px; height: 398px;">
+</head>
+<body>
+    <div class="container-fluid content">
+        <div class="row">
+            <div class="col-6">
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-motorcycle fa-3x"></i>
+                    <h1 class="logo">EcoRider</h1>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="d-flex justify-content-end align-items-center">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="inicio.html">INICIAR SESIÓN</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="registro.html">REGISTRO</a>
+                        </li>
+                    </ul>
+                    <form class="ml-3">
+                        <input type="text" class="form-control" placeholder="Buscar">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-3">
+                <h3>¿Qué quieres hacer?</h3>
+                <ul class="menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Usuario <i class="fas fa-ellipsis-v"></i></a>
+                        <ul class="submenu">
+                            <li><a href="#">Crear usuario</a></li>
+                            <li><a href="#">Listar usuario</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Empresas <i class="fas fa-ellipsis-v"></i></a>
+                        <ul class="submenu">
+                            <li><a href="#">Crear empresas</a></li>
+                            <li><a href="#">Listar empresas</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Productos <i class="fas fa-ellipsis-v"></i></a>
+                        <ul class="submenu">
+                            <li><a href="#">Crear productos</a></li>
+                            <li><a href="#">Listar productos</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-9">
+                <h3>Bienvenido a EcoRider</h3>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Motos</h5>
+                                <p class="card-text">Descripción de las motos.</p>
+                                <a href="#" class="btn btn-primary">Ver más</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Patinetes</h5>
+                                <p class="card-text">Descripción de los patinetes.</p>
+                                <a href="#" class="btn btn-primary">Ver más</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Contacto</h5>
+                                <p class="card-text">Información de contacto.</p>
+                                <a href="#" class="btn btn-primary">Ver más</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <form action="login.php" method="post" onsubmit="return validateForm()">
-        <fieldset>
-            <legend>Iniciar sesión</legend>
-            <p>Iniciar sesión para continuar</p>
-            <div class="error-msg" id="error-msg"></div>
-            <label for="username"><i class="fas fa-user"></i> Correo o Nombre de Usuario:</label> <!-- Cambiado a "Correo o Nombre de Usuario" -->
-            <input type="text" id="username" name="username">
-            <br>
-            <label for="password"><i class="fas fa-lock"></i> Contraseña:</label>
-            <input type="password" id="password" name="password">
-            <br>
-            <input type="submit" value="Iniciar sesión">
-        </fieldset>
-    </form>
-
-    <p style="text-align: center;"><a href="#">¿Olvidó la contraseña?</a> | <a href="#">Registrarse</a></p>
-    
-    <script>
-        function validateForm() {
-            var username = document.getElementById("username").value;
-            var password = document.getElementById("password").value;
-
-            if (username === "" || password === "") {
-                document.getElementById("error-msg").innerHTML = "Por favor, complete todos los campos.";
-                document.getElementById("error-msg").style.display = "block";
-                return false;
-            }
-
-            return true;
-        }
-    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
