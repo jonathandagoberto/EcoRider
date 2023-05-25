@@ -4,7 +4,8 @@
     <title>EcoRider - Página Principal</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
     <style>
         /* Estilos CSS adicionales */
         body {
@@ -37,8 +38,6 @@
             padding: 20px;
         }
     </style>
-</head>
-<body>
 </head>
 <body>
     <div class="container-fluid content">
@@ -90,6 +89,19 @@
                             <li><a href="#">Listar productos</a></li>
                         </ul>
                     </li>
+                    <!-- Aquí se agrega el código del dropdown -->
+                    <li class="nav-item">
+                        <div class="dropdown">
+                          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dropdown button
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                          </div>
+                        </div>
+                    </li>
                 </ul>
             </div>
             <div class="col-md-9">
@@ -127,6 +139,13 @@
         </div>
     </div>
 
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
 </body>
 </html>
+
+
+
+
+
