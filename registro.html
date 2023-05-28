@@ -4,7 +4,7 @@
     <title>EcoRider</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         /* Aquí colocas el código CSS */
         body {
@@ -15,6 +15,34 @@
 
         h1 {
             text-align: center;
+            margin-top: 0; /* Agregamos esto para eliminar el margen superior predeterminado */
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between; /* Cambiamos a separar los elementos */
+            align-items: center;
+            background-color: #f9f9f9; /* Agregamos un color de fondo al cuadro */
+            padding: 20px 20px; /* Agregamos espacio interno al cuadro */
+            border-radius: 10px; /* Agregamos bordes redondeados al cuadro */
+        }
+
+        .header img {
+            max-width: 40px; /* Se cambió el tamaño a 30px */
+            height: auto;
+        }
+
+        .config-icon {
+            margin-left: 5px; /* Se redujo el margen */
+        }
+
+        .config-text {
+            margin-left: 5px;
+        }
+
+        .title-container {
+            flex-grow: 1; /* Permite que el título crezca y ocupe el espacio restante */
+            text-align: center; /* Centra el título horizontalmente */
         }
 
         form {
@@ -58,12 +86,54 @@
             margin-bottom: 10px;
             display: none;
         }
+
+        .profile-container {
+            position: relative;
+        }
+
+        .profile-info {
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        .profile-info.show {
+            display: block;
+        }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
 </head>
 <body>
-    <h1>EcoRider</h1>
+    <div class="header">
+        <div class="title-container">
+            <h1>EcoRider</h1>
+        </div>
+        <div class="profile-container">
+            <img id="profile-image" class="profile-image" src="imagenes/usu.png" alt="Imagen de perfil" onclick="toggleProfileInfo()">
+
+            <div id="profile-info" class="profile-info">
+                <img class="profile-image" src="imagenes/usu.png" alt="Imagen de perfil">
+                <div class="profile-username">Nombre de usuario</div>
+                <div class="profile-buttons">
+                    <a href="#" class="btn btn-primary">Perfil</a>
+                    <a href="#" class="btn btn-danger">Salir</a>
+                </div>
+            </div>
+        </div>
+        <div class="config-icon" data-bs-toggle="offcanvas" data-bs-target="#configMenu" aria-controls="configMenu">
+            <i class="fas fa-cog"></i>
+        </div>
+    </div>
+
     <img src="imagenes/moto.png" alt="Moto" style="display: block; margin: 0 auto; max-width: 399px; height: 398px;">
 
     <form action="register.php" method="post" onsubmit="return validateForm()">
@@ -83,11 +153,39 @@
             <label for="phone"><i class="fas fa-phone"></i> Teléfono:</label>
             <input type="text" id="phone" name="phone">
             <br>
+            <label for="role"><i class="fas fa-users"></i> Rol:</label>
+            <input type="text" id="role" name="role">
+            <br>
             <input type="submit" value="Crear cuenta">
         </fieldset>
     </form>
 
-    <p style="text-align: center;"><a href="#">¿Ya tienes una cuenta? Inicia sesión</a></p>
+    <p style="text-align: center;"><a href="inicio.html">¿Ya tienes una cuenta? Inicia sesión</a></p>
+
+    <!-- Configuración Offcanvas -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="configMenu" aria-labelledby="configMenuLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Configuración</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div>
+                En este menú podrás descubrir todas tus posibilidades dentro de nuestra increíble página.
+            </div>
+            <div class="dropdown mt-4">
+                <a href="configuracion_general.html" class="dropdown-item">Configuración general</a>
+            </div>
+            <div class="dropdown mt-4">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" id="dropdownMenu">
+                    Idioma
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+                    <li><a href="#" class="dropdown-item">Español</a></li>
+                    <li><a href="#" class="dropdown-item">Inglés</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
     <script>
         function validateForm() {
@@ -95,14 +193,23 @@
             var email = document.getElementById("email").value;
             var password = document.getElementById("password").value;
             var phone = document.getElementById("phone").value;
+            var role = document.getElementById("role").value;
+            var errorMsg = document.getElementById("error-msg");
 
-            if (name === "" || email === "" || password === "" || phone === "") {
-                document.getElementById("error-msg").innerHTML = "Por favor, complete todos los campos.";
-                document.getElementById("error-msg").style.display = "block";
+            if (name === "" || email === "" || password === "" || phone === "" || role === "") {
+                errorMsg.style.display = "block";
+                errorMsg.innerHTML = "Por favor, completa todos los campos";
                 return false;
             }
 
+            // Aquí puedes agregar más validaciones si lo deseas
+
             return true;
+        }
+
+        function toggleProfileInfo() {
+            var profileInfo = document.getElementById("profile-info");
+            profileInfo.classList.toggle("show");
         }
     </script>
 </body>

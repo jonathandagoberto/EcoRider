@@ -125,36 +125,6 @@
         .profile-info.show {
             display: block;
         }
-        
-        .form-step {
-            margin-top: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 10px;
-        }
-        
-        .form-step-title {
-            font-weight: bold;
-            font-size: 20px;
-        }
-        
-        .form-step-subtitle {
-            margin-top: 10px;
-            font-size: 16px;
-        }
-        
-        .form-step-left {
-            float: left;
-        }
-        
-        .form-step-right {
-            float: right;
-        }
-        
-        .form-step-button {
-            margin-top: 20px;
-            text-align: right;
-        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -203,39 +173,6 @@
             <input type="submit" value="siguiente">
         </form>
 
-        <div class="form-step">
-            <div class="form-step-title">Paso 2: Recursos</div>
-            <div class="form-step-subtitle">
-                <div class="form-step-left">Recursos 2 de 3</div>
-                <div class="form-step-right">
-                    <div class="form-step-button" onclick="toggleForm('nuevo-recurso')">+</div>
-                </div>
-            </div>
-            <div id="nuevo-recurso" style="display: none;">
-                <h3>Nuevo Recurso</h3>
-                <form action="#" method="post">
-                    <label for="nombre-recurso">Nombre:</label>
-                    <input type="text" id="nombre-recurso" name="nombre-recurso" required>
-                    <br>
-
-                    <label for="totales">Totales:</label>
-                    <input type="text" id="totales" name="totales" required>
-                    <br>
-
-                    <label for="prestados">Prestados:</label>
-                    <input type="text" id="prestados" name="prestados" required>
-                    <br>
-
-                    <div class="form-step-button">
-                        <div class="form-step-left">Cerrar</div>
-                        <div class="form-step-right">
-                            <input type="submit" value="Guardar">
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
         <!-- Configuración Offcanvas -->
         <div class="offcanvas offcanvas-end" tabindex="-1" id="configMenu" aria-labelledby="configMenuLabel">
             <div class="offcanvas-header">
@@ -266,12 +203,6 @@
             function toggleProfileInfo() {
                 var profileInfo = document.getElementById("profile-info");
                 profileInfo.classList.toggle("show");
-            }
-
-            // Función para mostrar/ocultar el formulario de nuevo recurso
-            function toggleForm(formId) {
-                var form = document.getElementById(formId);
-                form.style.display = (form.style.display === "none") ? "block" : "none";
             }
         </script>
     </div>
