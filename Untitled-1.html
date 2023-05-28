@@ -126,34 +126,74 @@
             display: block;
         }
         
-        .form-step {
+        /* Estilos para el paso 2 */
+        .step2-container {
+            margin-top: 40px;
+        }
+        
+        .step2-title {
+            font-size: 24px;
+            text-align: center;
+        }
+        
+        .step2-subtitle {
+            font-size: 18px;
+            text-align: center;
+        }
+        
+        .step2-resources {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
             margin-top: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+        }
+        
+        .step2-add-button {
+            margin-left: 10px;
+            font-size: 24px;
+            color: #0000ff;
+            cursor: pointer;
+        }
+        
+        .step2-resources-box {
+            margin-top: 20px;
             padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            display: none;
         }
         
-        .form-step-title {
+        .step2-resources-box.open {
+            display: block;
+        }
+        
+        .step2-resources-box label {
             font-weight: bold;
-            font-size: 20px;
         }
         
-        .form-step-subtitle {
-            margin-top: 10px;
-            font-size: 16px;
+        .step2-resources-box input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: #f2f2f2;
+            box-sizing: border-box;
         }
         
-        .form-step-left {
-            float: left;
-        }
-        
-        .form-step-right {
+        .step2-close-button {
             float: right;
+            margin-left: 10px;
+            font-size: 20px;
+            color: #ff0000;
+            cursor: pointer;
         }
         
-        .form-step-button {
-            margin-top: 20px;
-            text-align: right;
+        .step2-save-button {
+            float: right;
+            font-size: 20px;
+            color: #008000;
+            cursor: pointer;
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -203,39 +243,6 @@
             <input type="submit" value="siguiente">
         </form>
 
-        <div class="form-step">
-            <div class="form-step-title">Paso 2: Recursos</div>
-            <div class="form-step-subtitle">
-                <div class="form-step-left">Recursos 2 de 3</div>
-                <div class="form-step-right">
-                    <div class="form-step-button" onclick="toggleForm('nuevo-recurso')">+</div>
-                </div>
-            </div>
-            <div id="nuevo-recurso" style="display: none;">
-                <h3>Nuevo Recurso</h3>
-                <form action="#" method="post">
-                    <label for="nombre-recurso">Nombre:</label>
-                    <input type="text" id="nombre-recurso" name="nombre-recurso" required>
-                    <br>
-
-                    <label for="totales">Totales:</label>
-                    <input type="text" id="totales" name="totales" required>
-                    <br>
-
-                    <label for="prestados">Prestados:</label>
-                    <input type="text" id="prestados" name="prestados" required>
-                    <br>
-
-                    <div class="form-step-button">
-                        <div class="form-step-left">Cerrar</div>
-                        <div class="form-step-right">
-                            <input type="submit" value="Guardar">
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
         <!-- Configuración Offcanvas -->
         <div class="offcanvas offcanvas-end" tabindex="-1" id="configMenu" aria-labelledby="configMenuLabel">
             <div class="offcanvas-header">
@@ -261,19 +268,29 @@
             </div>
         </div>
 
-        <script>
-            // Función para mostrar/ocultar la información del perfil
-            function toggleProfileInfo() {
-                var profileInfo = document.getElementById("profile-info");
-                profileInfo.classList.toggle("show");
-            }
-
-            // Función para mostrar/ocultar el formulario de nuevo recurso
-            function toggleForm(formId) {
-                var form = document.getElementById(formId);
-                form.style.display = (form.style.display === "none") ? "block" : "none";
-            }
-        </script>
+        <!-- Paso 2 -->
+        <div class="step2-container">
+            <div class="step2-title">Crear empresa</div>
+            <div class="step2-subtitle">Paso 2 de 3</div>
+            <div class="step2-resources">
+                Recursos
+                <i class="fas fa-plus step2-add-button" onclick="toggleResourceBox()"></i>
+            </div>
+            <div class="step2-resources-box" id="resourceBox">
+                <label for="nombreRecurso">Nombre:</label>
+                <input type="text" id="nombreRecurso" name="nombreRecurso">
+                <br>
+                <label for="totalRecurso">Total:</label>
+                <input type="text" id="totalRecurso" name="totalRecurso">
+                <br>
+                <label for="disponibleRecurso">Disponible:</label>
+                <input type="text" id="disponibleRecurso" name="disponibleRecurso">
+                <br>
+                <i class="fas fa-times step2-close-button" onclick="toggleResourceBox()"></i>
+                <i class="fas fa-check step2-save-button" onclick="saveResource()"></i>
+            </div>
+        </div>
     </div>
 </body>
 </html>
+

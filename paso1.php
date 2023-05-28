@@ -21,7 +21,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sql = "INSERT INTO empresas (nombre, encargado, telefono) VALUES ('$nombreEmpresa', '$nombreEncargado', '$telefono')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Los datos se han almacenado correctamente en la base de datos.";
+        // Cerrar la conexión a la base de datos
+        $conn->close();
+
+        // Redirigir al usuario a la página de origen
+        header("Location: paso2.html");
+        exit();
     } else {
         echo "Error al insertar los datos: " . $conn->error;
     }
@@ -30,3 +35,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $conn->close();
 }
 ?>
+

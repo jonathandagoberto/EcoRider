@@ -1,1 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Empresa</title>
+    <style>
+        /* Estilos adicionales */
 
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('imagenes/moto.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            height: 100vh; /* Asegura que el fondo ocupe el 100% de la altura de la pantalla */
+            overflow: hidden; /* Evita que haya desplazamiento vertical */
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px;
+        }
+        
+        /* Agregamos un color de fondo personalizado */
+        .container {
+            background-color: #eaf2ff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 0; /* Agregamos esto para eliminar el margen superior predeterminado */
+        }
+        .header {
+            display: flex;
+            justify-content: space-between; /* Cambiamos a separar los elementos */
+            align-items: center;
+            background-color: #f9f9f9; /* Agregamos un color de fondo al cuadro */
+            padding: 20px 20px; /* Agregamos espacio interno al cuadro */
+            border-radius: 10px; /* Agregamos bordes redondeados al cuadro */
+        }
+        .header img {
+            max-width: 40px; /* Se cambió el tamaño a 30px */
+            height: auto;
+        }
+        
+        .config-icon {
+            margin-left: 5px; /* Se redujo el margen */
+        }
+        
+        .config-text {
+            margin-left: 5px;
+        }
+        
+        .title-container {
+            flex-grow: 1; /* Permite que el título crezca y ocupe el espacio restante */
+            text-align: center; /* Centra el título horizontalmente */
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: #f2f2f2;
+            box-sizing: border-box;
+        }
+        
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: black;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        
+        .error-msg {
+            color: red;
+            margin-bottom: 10px;
+            display: none;
+        }
+        
+        .profile-container {
+            position: relative;
+        }
+        
+        .profile-info {
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+        
+        .profile-info.show {
+            display: block;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title-container">
+                <h1>Crear Empresa</h1>
+            </div>
+            <div class="profile-container">
+                <img id="profile-image" class="profile-image" src="imagenes/usu.png" alt="Imagen de perfil" onclick="toggleProfileInfo()">
+                <div id="profile-info" class="profile-info">
+                    <img class="profile-image" src="imagenes/usu.png" alt="Imagen de perfil">
+                    <div class="profile-username">Nombre de usuario</div>
+                    <div class="profile-buttons">
+                        <a href="#" class="btn btn-primary">Perfil</a>
+                        <a href="#" class="btn btn-danger">Salir</a>
+                    </div>
+                </div>
+            </div>
+            <div class="config-icon" data-bs-toggle="offcanvas" data-bs-target="#configMenu" aria-controls="configMenu">
+                <i class="fas fa-cog"></i>
+            </div>
+        </div>
+
+        <div class="contenedor" style="background-color: #fff; padding: 20px; border-radius: 10px;">
+            <div style="text-align: left;">
+                <h2>Paso 2: Establecer recursos</h2>
+            </div>
+        
+            <div style="text-align: right;">
+                <p>Paso 2 de 3</p>
+            </div>
+        
+            <div style="text-align: left;">
+                <div style="display: inline-block; background-color: #f9f9f9; padding: 5px; border-radius: 5px;">
+                    <span style="font-size: 20px;">Recursos</span>
+                    <i class="fas fa-plus" onclick="openRecursosModal()"></i>
+                </div>
+            </div>
+        
+            <div style="text-align: center; margin-top: 50px;">
+                <button class="btn btn-primary" onclick="goToPreviousStep()">Anterior</button>
+
+                <button class="btn btn-primary">Siguiente</button>
+            </div>
+        </div>
+        
+
+        <!-- Modal de recursos -->
+<!-- Modal de recursos -->
+<div class="modal fade" id="recursosModal" tabindex="-1" aria-labelledby="recursosModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="recursosModalLabel">Agregar Recursos</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="recursosForm" action="paso2.php" method="POST">
+                    <div class="mb-3">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" name="nombre" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="total">Total <i class="fas fa-hashtag"></i></label>
+                        <input type="number" id="total" name="total" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="prestados">Prestados <i class="fas fa-hashtag"></i></label>
+                        <input type="number" id="prestados" name="prestados" class="form-control" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="submit" form="recursosForm" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <!-- Configuración Offcanvas -->
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="configMenu" aria-labelledby="configMenuLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title">Configuración</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div>
+                    En este menú podrás descubrir todas tus posibilidades dentro de nuestra increíble página.
+                </div>
+                <div class="dropdown mt-4">
+                    <a href="configuracion_general.html" class="dropdown-item">Configuración general</a>
+                </div>
+                <div class="dropdown mt-4">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" id="dropdownMenu">
+                        Idioma
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+                        <li><a href="#" class="dropdown-item">Español</a></li>
+                        <li><a href="#" class="dropdown-item">Inglés</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // Función para mostrar/ocultar la información del perfil
+            function toggleProfileInfo() {
+                var profileInfo = document.getElementById("profile-info");
+                profileInfo.classList.toggle("show");
+            }
+        
+            // Función para abrir el modal de recursos
+            function openRecursosModal() {
+                var recursosModal = new bootstrap.Modal(document.getElementById('recursosModal'), {
+                    keyboard: false
+                });
+                recursosModal.show();
+            }
+        
+            function goToPreviousStep() {
+                window.location.href = "paso1.html";
+            }
+        </script>
+        
+    </div>
+</body>
+</html>
